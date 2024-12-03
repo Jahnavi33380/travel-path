@@ -1,0 +1,10 @@
+/* CreateTrip.css */
+.create-trip-container {
+  width: 100%; /* Ensure full width */
+  padding: 0 16px; /* Adjust padding if needed */
+}
+
+.create-trip-form {
+  max-width: 1000px; /* Or any custom max-width */
+  margin: 0 auto; /* Centers the form */
+}
