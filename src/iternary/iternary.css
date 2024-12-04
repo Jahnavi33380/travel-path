@@ -1,0 +1,40 @@
+
+
+.card-address,
+.card-rating,
+.card-distance,
+.card-time-now,
+.card-remaining-time,
+.card-travel-time {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.itinerary-card {
+    width: 70vw;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.itinerary-card:hover {
+    transform: scale(1.03);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-type, .card-address, .card-rating, .card-distance, .card-time-now, .card-travel-time {
+    font-size: 1rem;
+}
+
+.loading-icon {
+    text-align: center;
+    color: #007bff;
+}
