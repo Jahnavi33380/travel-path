@@ -10,8 +10,10 @@ import { getDatabase, ref, set, get, child, query, orderByChild, equalTo } from 
 import './LoginSignupPage.css';
 import Hero from '../custom/Hero'
 import Header from '../custom/Header'
+import { Link,useNavigate } from 'react-router-dom'
 
 const LoginSignupPage = () => {
+const navigate = useNavigate();
   const [signUp, setSignUp] = useState(false);
   const [formData, setFormData] = useState({
     name: "",

@@ -1,55 +1,181 @@
-/* Styles for the popup container */
+
 .dialog-content {
-  width: 400px;  /* Adjust width of the popup */
-  height: auto;  /* Automatically adjust height based on content */
-  padding: 20px;  /* Add padding inside the popup */
-  border-radius: 8px;  /* Round the corners */
-  background-color: #fff;  /* Set a background color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Add subtle shadow for depth */
-  overflow-y: auto;  /* Allow scrolling if content exceeds height */
+  width: 500px;
+  max-height: 80vh;
+  padding: 25px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* Adjust the header inside the popup */
-.dialog-header {
-  font-size: 1.5rem;
+
+.section-header {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff7e5f;
+  text-align: center;
+  padding: 20px 0;
+  margin: 20px 0;
+  border-bottom: 2px solid #eee;
+}
+
+
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ff7e5f, transparent);
+  margin: 30px 0;
+}
+
+
+.interests-section,
+.food-preferences-section {
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+
+.category-header {
+  font-size: 1.4rem;
   font-weight: 600;
+  color: #333;
+  margin: 15px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+
+.category-content {
+  margin-bottom: 20px;
+}
+
+
+.food-preferences-section {
+  margin-top: 40px;
+}
+.edit-preferences-page {
+  width: 470px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+
+.dialog-header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-header {
+  font-size: 1.4rem;
+  font-weight: bold;
   color: #333;
   margin-bottom: 15px;
 }
 
-/* Style the content section inside the popup */
-.dialog-body {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
+.category-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 5px 0;
 }
 
-/* Style for the buttons inside the popup */
-button.save-btn, button.cancel-btn {
-  background-color: #4CAF50;  /* Green for Save button */
-  color: white;
-  padding: 10px 20px;
+
+.chip-button {
+  padding: 8px 15px;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.9rem;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip-button:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.chip-button.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+
+.save-btn, .cancel-btn {
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: 600;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
-  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
 }
 
-button.save-btn:hover {
-  background-color: #45a049; /* Darker green on hover */
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
 }
 
-button.cancel-btn {
-  background-color: #f44336; /* Red for Cancel button */
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
 }
 
-button.cancel-btn:hover {
-  background-color: #e53935; /* Darker red on hover */
+.edit-preferences-page {
+  scrollbar-width: thin;
+  scrollbar-color: #ff7e5f #f0f0f0;
 }
 
-/* Ensure the popup is centered and has a nice transition */
+.edit-preferences-page::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.edit-preferences-page::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.edit-preferences-page::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+.edit-preferences-page::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #feb47b, #ff7e5f);
+  cursor: pointer;
+}
+
+.edit-preferences-page::-webkit-scrollbar-corner {
+  background: transparent;
+}
 .dialog-overlay {
   display: flex;
   justify-content: center;
@@ -59,6 +185,6 @@ button.cancel-btn:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);  /* Semi-transparent dark background */
-  transition: opacity 0.3s ease;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
 }
