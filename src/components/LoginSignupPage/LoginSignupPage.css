@@ -1,7 +1,7 @@
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #f5a623;
-  --background-color: #f0f4f8;
+  --primary-color: #ff8c00;
+  --secondary-color: #ffa500;
+  --background-color: #fff5e6;
   --text-color: #333;
   --error-color: #e74c3c;
   --success-color: #2ecc71;
@@ -14,6 +14,11 @@ body {
   line-height: 1.6;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 #login-signup {
   max-width: 400px;
   margin: 2rem auto;
@@ -21,7 +26,6 @@ body {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
 #login-signup:hover {
@@ -33,11 +37,6 @@ h1, h2 {
   color: var(--primary-color);
   text-align: center;
   margin-bottom: 1.5rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
 }
 
 input {
@@ -52,7 +51,7 @@ input {
 input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
 }
 
 button {
@@ -67,33 +66,10 @@ button {
 }
 
 button:hover {
-  background-color: #3a7bc8;
+  background-color: #e67e00;
 }
-
-button:active {
-  transform: scale(0.98);
-}
-
-button:disabled {
-  background-color: #b8b8b8;
-  cursor: not-allowed;
-}
-
-.popup {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.chip {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin: 0.25rem;
-  background-color: #e9ecef;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+button:hover {
+  background-color: #e67e00;
 }
 
 .chip:hover {
@@ -116,105 +92,15 @@ a:hover {
   color: var(--secondary-color);
 }
 
-.welcome {
-  text-align: center;
-}
-
-.welcome h1 {
-  color: var(--success-color);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.popup, .welcome, .sign-up, .login {
-  animation: fadeIn 0.5s ease;
-}
-
-.error-message {
-  color: #e74c3c;
-  font-size: 14px;
-  margin-top: 5px;
-}
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  padding: 1rem 0;
-  margin: 0;
-}
-
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-}
-
-.navbar li {
-  display: inline;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.home-content {
-  margin-top: 60px;
-  padding: 1rem;
-}
-.google-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  color: #757575;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 10px 16px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.google-btn:hover {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  background-color: #f8f8f8;
-}
-
-.google-btn:active {
-  background-color: #eee;
-}
-
-.google-btn::before {
-  content: '';
-  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=') no-repeat center center;
-  display: inline-block;
-  vertical-align: middle;
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
+  background-color: #ff8c00;
 }
 
 .google-btn-blue {
-  background-color: #4285f4;
+  background-color: #ff8c00;
   color: #fff;
 }
 
 .google-btn-blue:hover {
-  background-color: #3367d6;
-}
-
-.google-btn-blue::before {
-  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=') no-repeat center center;
+  background-color: #e67e00;
 }

@@ -339,6 +339,8 @@ return (
     ) : (
       <div id="login-signup">
         {loading && <p>Loading...</p>}
+        {<br/>}
+        {<br/>}
         {forgotPassword ? (
           <div className="forgot-password">
             <h1>Reset Password</h1>
@@ -461,16 +463,22 @@ return (
               <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleInputChange} value={formData.confirmPassword} required />
               {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
               {errors.general && <p className="error-message">{errors.general}</p>}
+              <br/>
               <button type="submit" disabled={loading}>
                 {loading ? "Signing Up......" : "Sign Up"}
               </button>
             </form>
             <br/>
             <button onClick={handleGoogleSignUp} class="google-btn">Sign Up with Google</button>
+            <br/>
+            <br/>
             <p>
               Already have an account?{" "}
               <a href="#" onClick={toggleSignUp}>Log In Here</a>
             </p>
+            <br/>
+            <br/>
+            <br/>
           </div>
         ) : (
           <div className="login">
@@ -481,14 +489,18 @@ return (
               <p>
                 <a href="#" onClick={handleForgotPassword}>Forgot Password?</a>
               </p>
+              <br/>
               <button type="submit" disabled={loading}>
                 {loading ? "Logging In..." : "Log In"}
               </button>
+
             </form>
             <br/>
             <button onClick={handleGoogleSignIn} disabled={loading} class="google-btn">
                 {loading ? "Signing In..." : "Sign In with Google"}
               </button>
+              <br/>
+              <br/>
             <p>
               Don't have an account?{" "}
               <a href="#" onClick={toggleSignUp}>Sign Up Here</a>
