@@ -29,6 +29,23 @@ const navigate = useNavigate();
   const [foodPreferences, setFoodPreferences] = useState([]);
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [selectedFood, setSelectedFood] = useState([]);
+
+  useEffect(() => {
+    const fetchUserPreferences = async () => {
+      if (userDetails && userDetails.id) {
+        const db = getDatabase();
+        const userRef = ref(db, `users/${userDetails.id}`);
+        const snapshot = await get(userRef);
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          setSelectedInterests(userData.interests || []);
+          setSelectedFood(userData.foodPreferences || []);
+        }
+      }
+    };
+
+    fetchUserPreferences();
+  }, [userDetails]);
   useEffect(() => {
     const fetchPreferences = async () => {
       const db = getDatabase();

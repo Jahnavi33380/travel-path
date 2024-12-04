@@ -21,13 +21,14 @@ import EditPreferences from '../LoginSignupPage/EditPreferences';
 import './Header.css';
 import { Link,useNavigate } from 'react-router-dom'
 
-function Header({ userDetails, onEditPreferences }) {
+function Header({ userDetails, onEditPreferences, setLoggedIn }) {
   const user = JSON.parse(localStorage.getItem('user'));
   const [openDialog, setOpenDialog] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [editPreferences, setEditPreferences] = useState(false);
   const [avatarLoadError, setAvatarLoadError] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
+   const navigate = useNavigate();
 
   useEffect(() => {
     console.log("user",user);
@@ -40,13 +41,6 @@ function Header({ userDetails, onEditPreferences }) {
     }
   }, [userDetails]);
 
-  const login = useGoogleLogin({
-    onSuccess: (codeResp) => {
-      console.log(codeResp);
-      GetUserProfile(codeResp);
-    },
-    onError: (error) => console.log(error)
-  });
     const handleEditPreferences = () => {
       setEditPreferences(true);
     };
@@ -70,12 +64,10 @@ function Header({ userDetails, onEditPreferences }) {
   };
    const handleLogout = () => {
      localStorage.removeItem('user');
-     setUserDetails(null);
      setLoggedIn(false);
-
-     window.location.href = '/';
+     navigate("/");
    };
-   const navigate = useNavigate();
+
 
   return (
       <div className='p-3 w-screen shadow-sm flex justify-between items-center px-5 bg-white relative'>

@@ -326,18 +326,11 @@ const LoginSignupPage = () => {
  const handleEditPreferences = () => {
    setShowEditPreferences(true);
  };
- const handleLogout = () => {
-   localStorage.removeItem('user');
-   setUserDetails(null);
-   setLoggedIn(false);
-
-   window.location.href = '/';
- };
 
 return (
   <>
     {loggedIn ? (<>
-    <Header userDetails={userDetails}/>
+    <Header userDetails={userDetails} setLoggedIn={setLoggedIn}/>
       <Hero userDetails={userDetails} />
       {showEditPreferences && (
         <EditPreferences
