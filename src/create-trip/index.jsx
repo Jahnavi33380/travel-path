@@ -5,7 +5,7 @@ import { PROMPT, SelectModeOfTransport, SelectTravelerList } from '@/constants/o
 import { Button } from '@/components/ui/button';
 import './createTrip.css';
 import { doc, setDoc } from "firebase/firestore";
-import { db } from '@/service/firebaseConfig';
+// import { db } from '@/service/firebaseConfig';
 import { sendMessage } from "@/service/modal";
 import { chatSession } from '@/service/modal';
 import {
