@@ -398,10 +398,11 @@ return (
             </div>
           ) : popupStage === "interests" ? (
             <div className="popup">
-              <h2>Select Your Interests</h2>
+              <h1>Select Your Interests</h1>
               {Object.entries(interests).map(([category, items]) => (
                 <div key={category}>
-                  <h3>{category}</h3>
+                  <h3 className="categories">{category}</h3>
+                  <br/>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {items.map((interest, index) => (
                       <Chip
@@ -420,14 +421,15 @@ return (
                   </div>
                 </div>
               ))}
+              <br/>
               <button onClick={handleInterestSelection}>Next</button>
             </div>
           ) : popupStage === "food" ? (
             <div className="popup">
-              <h2>Select Your Food Preferences</h2>
+              <h1>Select Your Food Preferences</h1>
               {Object.entries(foodPreferences).map(([category, items]) => (
                 <div key={category}>
-                  <h3>{category}</h3>
+                  <h3 className="categories">{category}</h3>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {items.map((food, index) => (
                       <Chip

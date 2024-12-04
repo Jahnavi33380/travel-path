@@ -118,7 +118,7 @@ button {
   padding: 0.7rem 1rem;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1rem; /* Slightly smaller button font */
   cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -128,14 +128,67 @@ button:hover {
   background: linear-gradient(135deg, #ffa366, #ffcc99); /* Lightened hover gradient */
   transform: translateY(-3px);
 }
+h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #ff7e5f;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #eee;
+}
 
+.categories {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 25px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff7e5f;
+  text-transform: capitalize;
+}
+
+/* Container for interest items */
+.categories + div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 15px 0;
+  margin-bottom: 20px;
+}
+
+
+.chip-button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: #fff;
+  border: 2px solid #ff7e5f;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chip-button:hover {
+  background-color: #ff7e5f;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(255, 126, 95, 0.2);
+}
+
+.chip-button.selected {
+  background-color: #ff7e5f;
+  color: white;
+  box-shadow: 0 4px 6px rgba(255, 126, 95, 0.2);
+}
 .chip {
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.8rem; /* Slightly smaller chip size */
   border-radius: 20px;
   font-weight: 500;
   background-color: #fdfdfd;
   color: var(--text-color);
-  font-size: 0.85rem;
+  font-size: 0.85rem; /* Reduced font size */
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -157,7 +210,7 @@ a {
   color: var(--primary-color);
   font-weight: 500;
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.85rem; /* Slightly smaller link font */
   transition: color 0.3s ease;
 }
 
@@ -184,13 +237,13 @@ a:hover {
   padding: 0.7rem 1rem;
   border-radius: 8px;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* Reduced font size for Google button */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .google-btn-blue img {
-  height: 18px;
+  height: 18px; /* Reduced icon size */
   width: 18px;
 }
 
