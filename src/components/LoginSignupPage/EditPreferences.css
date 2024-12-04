@@ -1,0 +1,121 @@
+.dialog-content {
+  width: 500px;
+  max-height: 85vh;
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #ffffff, #fafafa);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.section-header {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  padding: 25px 0;
+  margin: 15px 0;
+  border-bottom: 2px solid #eee;
+}
+
+.category-header {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 15px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #ff7e5f;
+}
+
+.category-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 0;
+  margin-bottom: 25px;
+}
+
+.chip-button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  background-color: #f8f9fa;
+  color: #ff7e5f;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 2px solid #ff7e5f;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chip-button:hover {
+  background-color: #fff0eb;
+  color: #ff7e5f;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 126, 95, 0.2);
+}
+
+.chip-button.selected {
+  background-color: #ff7e5f;
+  color: white;
+  border-color: #ff7e5f;
+  box-shadow: 0 4px 12px rgba(255, 126, 95, 0.2);
+}
+.save-btn, .cancel-btn {
+  padding: 14px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.save-btn {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.cancel-btn {
+  background: linear-gradient(45deg, #f44336, #e53935);
+  color: white;
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.edit-preferences-page {
+  width: 470px;
+  max-height: 85vh;
+  overflow-y: auto;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dialog-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

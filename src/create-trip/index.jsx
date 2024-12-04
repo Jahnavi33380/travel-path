@@ -5,7 +5,7 @@ import { PROMPT, SelectModeOfTransport, SelectTravelerList } from '@/constants/o
 import { Button } from '@/components/ui/button';
 import './createTrip.css';
 import { doc, setDoc } from "firebase/firestore";
-import { db } from '@/service/firebaseConfig';
+// import { db } from '@/service/firebaseConfig';
 import { sendMessage } from "@/service/modal";
 import { chatSession } from '@/service/modal';
 import {
@@ -34,8 +34,6 @@ function CreateTrip() {
 
     const [loading, setLoading] = useState(false);
 
-
-
     const navigate = useNavigate();
     const handleInputChange = (name, value) => {
 
@@ -49,7 +47,7 @@ function CreateTrip() {
         console.log(formData);
     }, [formData])
 
-    const login =  useGoogleLogin({
+    const login = useGoogleLogin({
         onSuccess: (codeResp) => {
             console.log(codeResp),
             GetUserProfile(codeResp);
