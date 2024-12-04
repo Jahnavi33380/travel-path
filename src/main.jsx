@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import CreateTrip from './create-trip'; // Adjust the path if necessary
+import CreateIternary from './iternary';
 import Header from './components/custom/Header';
 import ViewTrip from './view-trip/[tripId]/index.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path:'/view-trip/:tripId',
     element:<ViewTrip/>,
+  },
+  {
+    path:'/iternary',
+    element: <CreateIternary/>
   }
   
 ]);

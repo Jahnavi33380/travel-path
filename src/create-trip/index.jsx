@@ -34,6 +34,8 @@ function CreateTrip() {
 
     const [loading, setLoading] = useState(false);
 
+
+
     const navigate = useNavigate();
     const handleInputChange = (name, value) => {
 
@@ -47,7 +49,7 @@ function CreateTrip() {
         console.log(formData);
     }, [formData])
 
-    const login = useGoogleLogin({
+    const login =  useGoogleLogin({
         onSuccess: (codeResp) => {
             console.log(codeResp),
             GetUserProfile(codeResp);
