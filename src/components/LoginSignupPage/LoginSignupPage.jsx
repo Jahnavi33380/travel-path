@@ -446,6 +446,7 @@ return (
                   </div>
                 </div>
               ))}
+              <br/>
               <button onClick={handleFoodSelection}>Finish</button>
             </div>
           ) : null
