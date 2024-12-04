@@ -1,19 +1,70 @@
 :root {
-  --primary-color: #ff8c00;
-  --secondary-color: #ffa500;
+  --primary-color: #ffb347;
+  --secondary-color: #ffc87c;
   --background-color: #fff5e6;
   --text-color: #333;
   --error-color: #e74c3c;
   --success-color: #2ecc71;
-}
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --gradient-primary: linear-gradient(135deg, #ffb347, #ffc87c);
+  }
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
+h2.section-header {
+  font-size: 2.4rem;
+  color: #ff7e5f;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Category headers (Cuisines, Food Restrictions, Type) */
+.category-header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 25px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff7e5f;
+}
+
+/* Chips/buttons for food options */
+.chip-button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 8px;
+  background-color: #fff;
+  border: 2px solid #ff7e5f;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Container for chips */
+.category-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px 0;
+  margin-bottom: 25px;
+}
+
+/* Finish button */
+.finish-btn {
+  font-size: 1.3rem;
+  padding: 15px 40px;
+  margin-top: 30px;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -21,70 +72,92 @@ form {
 
 #login-signup {
   max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2.5rem auto;
+  padding: 2rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.9rem; /* Reduced font size for inner elements */
 }
 
 #login-signup:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 h1, h2 {
-  color: var(--primary-color);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
 input {
   margin-bottom: 1rem;
-  padding: 0.75rem;
+  padding: 0.7rem 1rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fdfdfd;
 }
 
 input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.3);
 }
 
 button {
-  background-color: var(--primary-color);
+  background: var(--gradient-primary);
   color: white;
-  padding: 0.75rem;
+  padding: 0.7rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #e67e00;
+  background: linear-gradient(135deg, #ffa366, #ffcc99); /* Lightened hover gradient */
+  transform: translateY(-3px);
 }
-button:hover {
-  background-color: #e67e00;
+
+.chip {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 500;
+  background-color: #fdfdfd;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .chip:hover {
-  background-color: var(--secondary-color);
+  background: var(--secondary-color);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 .chip.selected {
-  background-color: var(--primary-color);
+  background: var(--primary-color);
   color: white;
+  box-shadow: var(--shadow-md);
 }
 
 a {
   color: var(--primary-color);
+  font-weight: 500;
   text-decoration: none;
+  font-size: 0.85rem;
   transition: color 0.3s ease;
 }
 
@@ -93,14 +166,47 @@ a:hover {
 }
 
 .navbar {
-  background-color: #ff8c00;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
 }
 
 .google-btn-blue {
-  background-color: #ff8c00;
-  color: #fff;
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.google-btn-blue img {
+  height: 18px; 
+  width: 18px;
 }
 
 .google-btn-blue:hover {
-  background-color: #e67e00;
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+}
+
+.success {
+  color: var(--success-color);
+  font-size: 0.85rem;
 }
