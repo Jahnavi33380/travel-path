@@ -76,34 +76,33 @@ const LoginSignupPage = () => {
       const userRef = ref(db, `users/${userId}`);
       const snapshot = await get(userRef);
 
-      if (snapshot.exists()) {
-        setUserDetails({
-          id: userId,
-          ...snapshot.val()
+    if (snapshot.exists()) {
+      setUserDetails({
+      id: userId,
+       ...snapshot.val()
         });
-        setLoggedIn(true);
-      } else {
-        await set(userRef, {
-          name: user.displayName,
-          email: user.email,
-          phone: user.phoneNumber || "",
-        });
-
-        setUserDetails({
-          id: userId,
-          name: user.displayName,
-          email: user.email,
-        });
-
-        setPopupStage("gender");
-      }
-    } catch (error) {
-      console.error("Error during Google Sign-In:", error);
-      alert(`Error: ${error.message}`);
-    } finally {
-      setLoading(false);
+      setLoggedIn(true);
+      localStorage.setItem('user', JSON.stringify({ id: userId, ...snapshot.val() }));
+    } else {
+      await set(userRef, {
+        name: user.displayName,
+        email: user.email,
+        phone: user.phoneNumber || "",
+      });
+      setUserDetails({
+        id: userId,
+        name: user.displayName,
+        email: user.email,
+      });
+      setPopupStage("gender");
     }
-  };
+  } catch (error) {
+    console.error("Error during Google Sign-In:", error);
+    alert(`Error: ${error.message}`);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
@@ -469,7 +468,7 @@ return (
               </button>
             </form>
             <br/>
-            <button onClick={handleGoogleSignUp} class="google-btn">Sign Up with Google</button>
+            <button onClick={handleGoogleSignIn} class="google-btn">Sign Up with Google</button>
             <br/>
             <br/>
             <p>
