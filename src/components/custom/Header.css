@@ -7,18 +7,20 @@
   position: relative;
   display: inline-block;
   margin-left: 10px;
-  margin-right:30px;
+  margin-right:40px;
 }
 
 .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
+  right: 20px;
   background-color: black;
   color: white;
   padding: 10px;
   border-radius: 5px;
   display: none;
+  margin-right:100px;
 }
 
 .dropdown-menu button {
@@ -41,7 +43,7 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ff9800;
+  border: 2px solid #black;
   transition: transform 0.3s ease-in-out;
 }
 

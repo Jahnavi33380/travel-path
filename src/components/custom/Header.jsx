@@ -84,7 +84,7 @@ function Header({ userDetails, onEditPreferences }) {
         </a>
 
         <div className="navbar-user relative">
-          <span>{userDetails?.name || 'Guest'}</span>
+
           <div
             className={`avatar-container ${dropdownOpen ? 'dropdown-open' : ''}`}
             onClick={toggleDropdown}
@@ -96,12 +96,13 @@ function Header({ userDetails, onEditPreferences }) {
               className="user-avatar"
               onError={handleAvatarError}
             />
+             <span className="text-center">{userDetails?.name || 'Guest'}</span>
             {dropdownOpen && (
               <div className="dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
                 <button
                   onClick={() => navigate('/edit-preferences', { state: { userDetails } })}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >EditPreferences</button>
+                >Edit Preferences</button>
                 <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                   Logout
                 </button>
