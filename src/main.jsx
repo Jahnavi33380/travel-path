@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     path: '/manage-interest',
     element: <ManageInterests></ManageInterests>
   }
-  
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

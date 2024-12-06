@@ -115,7 +115,7 @@ function Header() {
     onSuccess: (codeResp) => {
       console.log(codeResp),
       GetUserProfile(codeResp);
-    },    
+    },
     onError: (error) => console.log(error)
   })
 
@@ -209,7 +209,7 @@ function Header() {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
