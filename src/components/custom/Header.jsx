@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter
 } from "@/components/ui/dialog"
 import { useGoogleLogin } from '@react-oauth/google';
 import { FcGoogle } from "react-icons/fc";
@@ -24,39 +25,69 @@ function AdditionalDetailsDialog({ isOpen, onClose, onSubmit }) {
 
   return (
     <Dialog open={isOpen}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Additional Information</DialogTitle>
-          <DialogDescription>
-            Please provide your age and gender to complete your profile.
+      <DialogContent className="sm:max-w-[425px] p-6">
+        <DialogHeader className="space-y-4">
+          <DialogTitle className="text-2xl font-bold text-center text-gray-900">
+            Complete Your Profile
+          </DialogTitle>
+          <DialogDescription className="text-center text-gray-600">
+            Please provide a few details to enhance your travel experience
           </DialogDescription>
         </DialogHeader>
-        <div className="mt-4 space-y-4">
-          <div>
-            <label htmlFor="age" className="block text-sm font-medium text-gray-700">Age</label>
+
+        <div className="mt-8 space-y-6">
+          <div className="space-y-2">
+            <label
+              htmlFor="age"
+              className="text-sm font-semibold text-gray-700"
+            >
+              Age
+            </label>
             <input
               type="number"
               id="age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none"
+              placeholder="Enter your age"
             />
           </div>
-          <div>
-            <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
+
+          <div className="space-y-2">
+            <label
+              htmlFor="gender"
+              className="text-sm font-semibold text-gray-700"
+            >
+              Gender
+            </label>
             <select
               id="gender"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none"
             >
-              <option value="">Select gender</option>
+              <option value="">Select your gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
           </div>
-          <Button onClick={() => onSubmit({ age, gender })}>Submit</Button>
+        </div>
+
+        <div className="mt-8 flex gap-4 justify-end">
+          <Button
+            onClick={onClose}
+            className="px-6 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+            variant="outline"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={() => onSubmit({ age, gender })}
+            className="px-6 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200"
+          >
+            Save Details
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
@@ -67,10 +98,18 @@ function Header() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [openDialog, setOpenDialog] = useState(false);
   const [showAdditionalDetails, setShowAdditionalDetails] = useState(false);
+  const handleSignInClick = () => {
+    setOpenDialog(true);
+  };
 
   useEffect(() => {
     console.log(user)
   }, [user])
+
+  const handleCloseAdditionalDetails = () => {
+    setShowAdditionalDetails(false);
+  };
+
 
   const login = useGoogleLogin({
     onSuccess: (codeResp) => {
@@ -84,7 +123,7 @@ function Header() {
     axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo.access_token}`, {
       headers: {
         Authorization: `Bearer ${tokenInfo?.access_token}`,
-        Accept: 'Application/json' 
+        Accept: 'Application/json'
       }
     }).then((resp) => {
       console.log(resp);
@@ -144,28 +183,28 @@ function Header() {
           <Button className='px-4 py-2 text-sm' onClick={()=>setOpenDialog(true)}> Sign In</Button>
         }
 
-        <Dialog open={openDialog}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogDescription>
-                <img src="/logo.svg" alt="Logo" />
-                <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
-                <p>Sign In to Travel Path using Google Authentication</p>
+       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+         <DialogContent className="sm:max-w-[425px]">
+           <DialogHeader>
+             <DialogDescription>
+               <img src="/logo.svg" alt="Logo" />
+               <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
+               <p>Sign In to Travel Path using Google Authentication</p>
 
-                <Button
-                  onClick={login} className='w-full mt-5 flex gap-4 items-center'>
-                  <FcGoogle className='h-7 w-7' />
-                  Sign In with Google
-                </Button>
-
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
+               <Button
+                 onClick={login}
+                 className='w-full mt-5 flex gap-4 items-center'>
+                 <FcGoogle className='h-7 w-7' />
+                 Sign In with Google
+               </Button>
+             </DialogDescription>
+           </DialogHeader>
+         </DialogContent>
+       </Dialog>
 
         <AdditionalDetailsDialog
           isOpen={showAdditionalDetails}
-          onClose={() => setShowAdditionalDetails(false)}
+          onClose={handleCloseAdditionalDetails}
           onSubmit={handleAdditionalDetails}
         />
       </div>
