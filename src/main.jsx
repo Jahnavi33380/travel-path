@@ -8,6 +8,7 @@ import CreateIternary from './iternary';
 import Header from './components/custom/Header';
 import ViewTrip from './view-trip/[tripId]/index.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import ManageInterests from './manage-interests';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path:'/iternary',
     element: <CreateIternary/>
+  },
+  {
+    path: '/manage-interest',
+    element: <ManageInterests></ManageInterests>
   }
   
 ]);
@@ -35,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
     <Header/>
     <RouterProvider  router={router} />
-    </GoogleOAuthProvider>;
+    </GoogleOAuthProvider>
   </React.StrictMode>,
 );
 

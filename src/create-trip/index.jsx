@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
-import { Input } from '../components/ui/input'
+import React, { useEffect, useState } from 'react';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { Input } from '../components/ui/input';
 import { PROMPT, SelectModeOfTransport, SelectTravelerList } from '@/constants/options';
 import { Button } from '@/components/ui/button';
 import './createTrip.css';
@@ -15,50 +15,41 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
-
-
-
-
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 
 function CreateTrip() {
-    const [place, setPlace] = useState();
-
+    const [place, setPlace] = useState(null);  // Default as null
     const [formData, setFormData] = useState({});
     const [openDailog, setOpenDailog] = useState(false);
-
     const [loading, setLoading] = useState(false);
-
-
-
     const navigate = useNavigate();
-    const handleInputChange = (name, value) => {
 
+    const handleInputChange = (name, value) => {
         setFormData({
             ...formData,
-            [name]: value
-        })
-    }
+            [name]: value,
+        });
+    };
 
     useEffect(() => {
         console.log(formData);
-    }, [formData])
+    }, [formData]);
 
-    const login =  useGoogleLogin({
+    const login = useGoogleLogin({
         onSuccess: (codeResp) => {
-            console.log(codeResp),
+            console.log(codeResp);
             GetUserProfile(codeResp);
-        },    
-        onError: (error) => console.log(error)
-    })
+        },
+        onError: (error) => console.log(error),
+    });
 
     const OnGenerateClick = async () => {
-
         const user = localStorage.getItem('user');
         if (!user) {
             setOpenDailog(true);
@@ -69,25 +60,25 @@ function CreateTrip() {
             return;
         }
         setLoading(true);
+
+        // Generate prompt
         const FINAL_PROMPT = PROMPT
-            .replace('{location}', formData?.location.label)
+            .replace('{location}', formData?.location?.label || '')
             .replace('{noOfDays}', formData?.noOfDays)
             .replace('{noOfPeople}', formData?.noOfPeople)
             .replace('{transport}', formData?.transport)
-            .replace('{noOfDays}', formData?.noOfDays)
-
-        // console.log(FINAL_PROMPT);
+            .replace('{noOfDays}', formData?.noOfDays);
 
         const result = await chatSession.sendMessage(FINAL_PROMPT);
         console.log("--", result?.response.text());
         setLoading(false);
-        SaveTrip(result?.response.text()) 
-    }
+        SaveTrip(result?.response.text());
+    };
 
     const SaveTrip = async (TripData) => {
         setLoading(true);
         const user = JSON.parse(localStorage.getItem('user'));
-        const docId = Date.now().toString()
+        const docId = Date.now().toString();
         await setDoc(doc(db, "Trips", docId), {
             userSelection: formData,
             tripData: JSON.parse(TripData),
@@ -95,22 +86,36 @@ function CreateTrip() {
             id: docId
         });
         setLoading(false);
-        navigate('/view-trip/'+docId)
-    }
+        navigate('/manage-interest');
+    };
 
     const GetUserProfile = (tokenInfo) => {
         axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo.access_token}`, {
             headers: {
                 Authorization: `Bearer ${tokenInfo?.access_token}`,
-                Accept: 'Application/json' 
+                Accept: 'Application/json',
             }
         }).then((resp) => {
             console.log(resp);
             localStorage.setItem('user', JSON.stringify(resp.data));
             setOpenDailog(false);
             OnGenerateClick();
-        })
-    }
+        });
+    };
+
+    const handlePlaceChange = (value, details) => {
+        console.log("Value is", value, details);
+
+        setPlace(value);  // Set the place object
+        handleInputChange('location', value);  // Update formData with location details
+        if (value && value?.label) {
+            geocodeByAddress(value?.label).then(results => getLatLng(results[0]))
+                .then(({ lat, lng }) =>
+                    console.log('Successfully got latitude and longitude', { lat, lng })
+                );
+        }
+    };
+
     return (
         <div className='create-trip-container'>
             <div className='create-trip-form'>
@@ -118,15 +123,21 @@ function CreateTrip() {
                     <h2 className='font-bold text-3xl'>Tell us your travel preferences 🧳</h2>
                     <p className='mt-3 text-gray-500 text-xl'>Just Provide us some basic information and our Travel Planner will generate itinerary for you!</p>
 
-                    <div className=' mt-20 flex flex-col gap-10'>
+                    <div className='mt-20 flex flex-col gap-10'>
                         <div>
                             <h2 className='text-xl my-3 font-medium'>Current Location ?</h2>
                             <GooglePlacesAutocomplete
                                 apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
                                 selectProps={{
                                     place,
-                                    onChange: (v) => { setPlace(v); handleInputChange('location', v) }
+                                    onChange: handlePlaceChange,  // Updated to use handlePlaceChange
                                 }}
+                                onPress={(data, details = null) => {
+                                    console.log("data", data);
+                                    console.log("details", details);
+                                    console.log(JSON.stringify(details?.geometry?.location));
+                                }}
+
                             />
                         </div>
 
@@ -204,13 +215,11 @@ function CreateTrip() {
                             </DialogHeader>
                         </DialogContent>
                     </Dialog>
- 
+
                 </div>
             </div>
         </div>
-
-
-    )
+    );
 }
 
-export default CreateTrip
+export default CreateTrip;
