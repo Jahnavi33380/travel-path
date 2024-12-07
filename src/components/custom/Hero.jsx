@@ -10,15 +10,7 @@ function Hero({userDetails}) {
             <span className='text-[rgb(255,122,0)]'>Discover your new Adventure with Travel Path 🛫</span> <br /> Your Itinerary Planner</h1>
             <p className='text-xl text-gray-500 text-center'> Your Personalized Travel Planner by Team 11</p>
            <Link to={'/create-trip'}>
-           {userDetails ? (
-                                         <p className="text-xl text-green-500 text-center">
-                                           Welcome, {userDetails.name || 'User'}!
-                                         </p>
-                                       ) : (
-                                         <Link to={'/login-signup'}>
-                                           <Button>Log In / Sign Up</Button>
-                                         </Link>
-                                       )}
+
                                        <br/>
                                        <br/>
            <Button className="text-center"> Get Started! It's Free</Button>
