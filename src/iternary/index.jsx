@@ -20,7 +20,7 @@ export default function CreateIternary() {
         iternarySocket.onopen = () => {
             console.log('WebSocket connected');
             const requestData = {
-                max_distance: 50000,
+                max_distance: 70000,
                 rating_threshold: 4.5,
                 restaurant_type: storedFood,  // Use stored preferences
                 interests: storedInterests,   // Use stored preferences

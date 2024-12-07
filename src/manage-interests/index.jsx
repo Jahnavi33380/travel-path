@@ -45,13 +45,13 @@ export default function ManageInterests() {
 
     const interestCategories = {
         'Art & History': [
-            { name: 'Museums', image: '🏛️' },
+            { name: 'Museum', image: '🏛️' },
             { name: 'Art Galleries', image: '🖼️' },
             { name: 'Monuments', image: '🗽' },
             { name: 'Church', image: '⛪' },
         ],
         Nature: [
-            { name: 'Lakes', image: '🏞️' },
+            { name: 'Lake', image: '🏞️' },
             { name: 'Beaches', image: '🏖️' },
             { name: 'Valley', image: '🏔️' },
             { name: 'National Parks', image: '🌲' },
@@ -60,7 +60,8 @@ export default function ManageInterests() {
         ],
         'Sports & Outdoors': [
             { name: 'Stadium', image: '🏟️' },
-            { name: 'Parks', image: '🌳' },
+            { name: 'Park', image: '🌳' },
+            { name: 'Summit', image: '🚶‍♂️' },
             { name: 'Skiing', image: '⛷️' },
             { name: 'Trekking', image: '🥾' },
             { name: 'Hiking', image: '🚶‍♂️' },
