@@ -31,7 +31,8 @@ const router = createBrowserRouter([
   {
     path: '/manage-interest',
     element: <ManageInterests />,
-  },
+  }
+
 ]);
 
 
