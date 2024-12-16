@@ -13,23 +13,23 @@ import ManageInterests from './manage-interests';
 
 const router = createBrowserRouter([
   {
-    path: '/travel-path/',
+    path: '/',
     element: <App />,
   },
   {
-    path: '/travel-path/create-trip',
+    path: '/create-trip',
     element: <CreateTrip />,
   },
   {
-    path: '/travel-path/view-trip/:tripId',
+    path: '/view-trip/:tripId',
     element: <ViewTrip />,
   },
   {
-    path: '/travel-path/iternary',
+    path: '/iternary',
     element: <CreateIternary />,
   },
   {
-    path: '/travel-path/manage-interest',
+    path: '/manage-interest',
     element: <ManageInterests />,
   },
 ]);
