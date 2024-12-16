@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy" : "vite build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "vite build",
+    "deploy": "vite-gh-pages"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
@@ -45,6 +45,7 @@
     "globals": "^15.12.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "vite-plugin-gh-pages": "^1.0.0"
   }
 }
