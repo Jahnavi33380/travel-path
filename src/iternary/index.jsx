@@ -15,8 +15,8 @@ export default function CreateIternary() {
         setSelectedFood(storedFood);
         setSelectedInterests(storedInterests);
 
-        const iternarySocket = new WebSocket('ws://localhost:8000/ws/itinerary');
-
+        const iternarySocket = new WebSocket('ws://82.197.93.235:8000/ws/itinerary');
+        const cord = JSON.parse(localStorage.getItem("cord"));
         iternarySocket.onopen = () => {
             console.log('WebSocket connected');
             const requestData = {
@@ -25,8 +25,8 @@ export default function CreateIternary() {
                 restaurant_type: storedFood,  // Use stored preferences
                 interests: storedInterests,   // Use stored preferences
                 result_limit: 5,
-                latitude: 33.4230, 
-                longitude: -111.9278
+                latitude: cord.lat || 33.4230, 
+                longitude: cord.lng || -111.9278
             };
             iternarySocket.send(JSON.stringify(requestData));
         };
