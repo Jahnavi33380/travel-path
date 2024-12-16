@@ -69,22 +69,21 @@ function CreateTrip() {
             .replace('{transport}', formData?.transport)
             .replace('{noOfDays}', formData?.noOfDays);
 
-        const result = await chatSession.sendMessage(FINAL_PROMPT);
-        console.log("--", result?.response.text());
+
         setLoading(false);
-        SaveTrip(result?.response.text());
+        SaveTrip(null);
     };
 
     const SaveTrip = async (TripData) => {
         setLoading(true);
         const user = JSON.parse(localStorage.getItem('user'));
         const docId = Date.now().toString();
-        await setDoc(doc(db, "Trips", docId), {
-            userSelection: formData,
-            tripData: JSON.parse(TripData),
-            userEmail: user?.email,
-            id: docId
-        });
+        // await setDoc(doc(db, "Trips", docId), {
+        //     userSelection: formData,
+        //     tripData: JSON.parse(TripData),
+        //     userEmail: user?.email,
+        //     id: docId
+        // });
         setLoading(false);
         navigate('/manage-interest');
     };
@@ -110,9 +109,10 @@ function CreateTrip() {
         handleInputChange('location', value);  // Update formData with location details
         if (value && value?.label) {
             geocodeByAddress(value?.label).then(results => getLatLng(results[0]))
-                .then(({ lat, lng }) =>
-                    console.log('Successfully got latitude and longitude', { lat, lng })
-                );
+                .then(({ lat, lng }) => {
+                    console.log('Successfully got latitude and longitude', { lat, lng });
+                    localStorage.setItem("cord", JSON.stringify({ lat, lng }));
+                });
         }
     };
 
