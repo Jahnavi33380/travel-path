@@ -13,24 +13,24 @@ import ManageInterests from './manage-interests';
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>,
+    path: '/',
+    element: <App />,
   },
   {
-    path:'/create-trip',
-    element:<CreateTrip/>,
+    path: '/create-trip',
+    element: <CreateTrip />,
   },
   {
-    path:'/view-trip/:tripId',
-    element:<ViewTrip/>,
+    path: '/view-trip/:tripId',
+    element: <ViewTrip />,
   },
   {
-    path:'/iternary',
-    element: <CreateIternary/>
+    path: '/iternary',
+    element: <CreateIternary />,
   },
   {
     path: '/manage-interest',
-    element: <ManageInterests></ManageInterests>
+    element: <ManageInterests />,
   }
 
 ]);
@@ -39,8 +39,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
     <Header/>
-    <RouterProvider router={router}  />
+    <RouterProvider router={router}/>
     </GoogleOAuthProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
